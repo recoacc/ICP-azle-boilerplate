@@ -8,16 +8,14 @@ This is a simplified example of an election system implemented in TypeScript. It
 
    ```typescript
       const election = new ElectionSystem();
-         ```
+'''
+#2. **Add Candidates**
+Candidates are registered with their names using the `addCandidate` method.
 
-##2. **Add Candidates**
-
-            Candidates are registered with their names using the `addCandidate` method.
-
-               ```typescript
+```typescript
                   election.addCandidate("Candidate A");
                      election.addCandidate("Candidate B");
-                        ```
+```
 
 ##3. **Cast Votes**
 
@@ -45,20 +43,13 @@ You can display the election results using a loop:
                                                                console.log("Election Results:");
                                                                   results.forEach((candidate, index) => {
                                                                        console.log(`${index + 1}. ${candidate.name}: ${candidate.votes} votes`);
-                                                                          });
-   ```
+});                               
 
-                                    
 ## Example Output
+1. Candidate A: 2 votes
+2. Candidate B: 1 votes
 
-                                       ```
-                                                                             ##Election Results:
-                                                                             1. Candidate A: 2 votes
-                                                                             2. Candidate B: 1 votes
-                                                                             ```
-
-                                    
-                                      ## Note
+## Note
 
 -This is a basic example for demonstration purposes and does not cover all aspects of a real-world election system.
                                        - In a production system, you would need to consider security, user authentication, and data persistence.
