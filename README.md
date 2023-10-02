@@ -4,26 +4,26 @@ This is a simplified example of an election system implemented in TypeScript. It
 
 ## Usage
 
-##1. **Create an Election System**
+#1. **Create an Election System**
 
-typescript
-const election = new ElectionSystem();
+`typescript
+const election = new ElectionSystem();`
 
 #2. **Add Candidates**
 Candidates are registered with their names using the `addCandidate` method.
 
-   election.addCandidate("Candidate A");
-   election.addCandidate("Candidate B");
+   `election.addCandidate("Candidate A");
+   election.addCandidate("Candidate B");`
 
 
-##3. **Cast Votes**
+#3. **Cast Votes**
 
    Votes are cast for candidates by specifying their names using the `castVote` method.
 
                               
+   `election.castVote("Candidate A");
    election.castVote("Candidate A");
-   election.castVote("Candidate A");
-   election.castVote("Candidate B");
+   election.castVote("Candidate B");`
                                           
 
 ##4. **Count Votes**
@@ -32,18 +32,18 @@ To count the votes and determine the winners, use the `countVotes` method.
 It returns an array of candidates sorted by the number of votes in descending order.
 
                                                 
-const results = election.countVotes();
+`const results = election.countVotes();`
                                                    
 
-##5. **Display Results**
+#5. **Display Results**
 
 You can display the election results using a loop:
 
 
-console.log("Election Results:");
+`console.log("Election Results:");
 results.forEach((candidate, index) => {
 console.log(`${index + 1}. ${candidate.name}: ${candidate.votes} votes`);
-});                               
+});`                               
 
 ## Example Output
 1. Candidate A: 2 votes
