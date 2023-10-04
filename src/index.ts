@@ -1,4 +1,4 @@
-import { Entity, Collection, System, createSystem } from 'axle';
+import { Entity, Collection, createSystem } from 'axle';
 
 class Candidate extends Entity {
   name: string;
@@ -17,7 +17,7 @@ class ElectionSystem extends Collection<Candidate> {
     this.add(candidate);
   }
 
-  castVote(candidateName: string) {
+  castVote(candidateName: string): boolean {
     const candidate = this.find((c) => c.name === candidateName);
     if (candidate) {
       candidate.votes++;
@@ -26,25 +26,31 @@ class ElectionSystem extends Collection<Candidate> {
     return false; // Candidate not found
   }
 
-  countVotes() {
+  countVotes(): Candidate[] {
     const sortedCandidates = this.sortByDesc((candidate) => candidate.votes);
     return sortedCandidates.toArray();
   }
 }
 
 // Example usage:
-const ElectionSystemSystem = createSystem(ElectionSystem);
-const election = new ElectionSystemSystem();
+function runElection() {
+  const ElectionSystemSystem = createSystem(ElectionSystem);
+  const election = new ElectionSystemSystem();
 
-election.addCandidate("Candidate A");
-election.addCandidate("Candidate B");
+  election.addCandidate("Candidate A");
+  election.addCandidate("Candidate B");
 
-election.castVote("Candidate A");
-election.castVote("Candidate A");
-election.castVote("Candidate B");
+  if (election.castVote("Candidate A")) {
+    console.log("Vote for Candidate A cast successfully.");
+  } else {
+    console.log("Candidate A not found.");
+  }
 
-const results = election.countVotes();
-console.log("Election Results:");
-results.forEach((candidate, index) => {
-  console.log(`${index + 1}. ${candidate.name}: ${candidate.votes} votes`);
-});
+  const results = election.countVotes();
+  console.log("Election Results:");
+  results.forEach((candidate, index) => {
+    console.log(`${index + 1}. ${candidate.name}: ${candidate.votes} votes`);
+  });
+}
+
+runElection();
